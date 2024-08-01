@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Navigation Menu</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            scroll-behavior: smooth; /* Smooth scrolling effect */
+        }
+
+        #main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(45deg, #333, #555);
+            padding: 20px 0;
+            transition: background 0.4s ease, box-shadow 0.4s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        #main-nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #main-nav li {
+            margin: 0 20px;
+        }
+
+        #main-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: background 0.4s ease, color 0.4s ease, transform 0.3s ease;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.4));
+        }
+
+        #main-nav a:hover {
+            background: linear-gradient(45deg, rgba(255, 107, 107, 0.6), rgba(255, 107, 107, 0.8));
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        /* Scrolled state */
+        #main-nav.scrolled {
+            background: linear-gradient(45deg, #fff, #f0f0f0);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        #main-nav.scrolled a {
+            color: #333;
+        }
+
+        #main-nav.scrolled a:hover {
+            background: linear-gradient(45deg, rgba(255, 107, 107, 0.6), rgba(255, 107, 107, 0.8));
+            color: #ff6b6b;
+        }
+
+        /* Add some spacing for the content */
+        main {
+            padding-top: 80px; /* Adjusted for increased nav height */
+        }
+
+        section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 2.5rem;
+            color: #fff;
+            height: 100vh;
+            background: url('https://via.placeholder.com/1920x1080?text=Background') no-repeat center center;
+            background-size: cover;
+            transition: background-color 0.4s ease, transform 0.4s ease;
+        }
+
+        section:nth-of-type(even) {
+            background: url('https://via.placeholder.com/1920x1080?text=Even+Section') no-repeat center center;
+            background-size: cover;
+        }
+
+        section:nth-of-type(odd) {
+            background: url('https://via.placeholder.com/1920x1080?text=Odd+Section') no-repeat center center;
+            background-size: cover;
+        }
+
+        section:hover {
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 768px) {
+            #main-nav a {
+                font-size: 18px;
+                padding: 8px 15px;
+            }
+
+            section {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="main-nav">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="home">Home Section</section>
+        <section id="about">About Section</section>
+        <section id="services">Services Section</section>
+        <section id="contact">Contact Section</section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const nav = document.getElementById('main-nav');
+            const scrollThreshold = 50;
+
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > scrollThreshold) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
